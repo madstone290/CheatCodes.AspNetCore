@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@* 서버의 Resource파일을 자바스크립트 객체로 변환하여 클라이언트에서 객체를 사용한다. *@
+@* 태그헬퍼로 <resouces> 태그를 <script>태그로 변경하면서 자바스크립트 객체를 생성한다. *@
+
+<resources groups="Labels, CreateJSObjectInServer.Labels, CreateJSObjectInServer.Orders"></resources>
+
+<button onclick="ChangeLanguage()">Change languge</button>
+<div>Root Labels</div>
+<div id="root-labels"></div>
+<div>Labels</div>
+<div id="labels"></div>
+<div>Orders</div>
+<div id="orders"></div>
+
+<script>
+    const korean = "ko-KR";
+    const english = "en-US";
+    
+    const params = new URLSearchParams(location.search);
+    let current = params.get("culture") ?? korean;
+    
+    function ChangeLanguage(){
+        if(current == korean)
+            current = english;
+        else
+            current = korean;
+
+        const url = new URL(window.location.href);
+        url.searchParams.set("culture", current);
+        window.location.href = url;
+    }
+
+    const rootLabelsDiv = document.getElementById("root-labels");
+    const labelsDiv = document.getElementById("labels");
+    const orderDiv = document.getElementById("orders");
+
+    // <resource> 태그로 생성한 Resource객체에 접근한다.
+    rootLabelsDiv.innerHTML = JSON.stringify(Resources.Labels);
+    labelsDiv.innerHTML = JSON.stringify(Resources.CreateJSObjectInServer.Labels);
+    orderDiv.innerHTML = JSON.stringify(Resources.CreateJSObjectInServer.Orders);
+</script>
+

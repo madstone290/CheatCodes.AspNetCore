@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheatCodes.AspNetCore.Configuration", "CheatCodes.AspNetCore.Configuration\CheatCodes.AspNetCore.Configuration.csproj", "{0075FC37-44F7-4BF6-9CE3-365A22695706}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheatCodes.AspNetCore.ClientResources", "CheatCodes.AspNetCore.ClientResources\CheatCodes.AspNetCore.ClientResources.csproj", "{3A15848A-501D-4EFC-BDB2-983D538D5154}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0075FC37-44F7-4BF6-9CE3-365A22695706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0075FC37-44F7-4BF6-9CE3-365A22695706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0075FC37-44F7-4BF6-9CE3-365A22695706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0075FC37-44F7-4BF6-9CE3-365A22695706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A15848A-501D-4EFC-BDB2-983D538D5154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A15848A-501D-4EFC-BDB2-983D538D5154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A15848A-501D-4EFC-BDB2-983D538D5154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A15848A-501D-4EFC-BDB2-983D538D5154}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57E9D069-AF4F-4AB3-8079-8AE45F0D35AD}
+	EndGlobalSection
+EndGlobal
