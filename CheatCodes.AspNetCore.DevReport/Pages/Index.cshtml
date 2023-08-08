@@ -1,0 +1,62 @@
+@page
+@using CheatCodes.AspNetCore.DevReport.Models
+
+@(Html.DevExtreme().SelectBox().ID("OpenLocationSelectBox")
+         .DataSource(d => d.Array().Data(new string[] { "NewTab", "SameTab" }))
+         .Value("SameTab"))
+@(Html.DevExtreme().Button().Text("Group report").OnClick("GroupBtn_Click").Width(150).Height(100))
+@(Html.DevExtreme().Button().Text("Label report").OnClick("LabelBtn_Click").Width(150).Height(100))
+@(Html.DevExtreme().Button().Text("Hierarchy report").OnClick("HierarchyBtn_Click").Width(150).Height(100))
+
+
+<iframe id="PrintFrame" name="printFrameName" title="Print" frameorder="0" style="position: absolute;width:0;height:0;border:0;"></iframe>
+
+
+<script>
+
+    function GetOpenLocation() { return $("#OpenLocationSelectBox").dxSelectBox("instance").option("value"); }
+    /**
+      * open in new tab
+      */
+    function ReportNewTab(url) {
+        let newTab = window.open(url, "_blank");
+        newTab.addEventListener("load", function (e) {
+            newTab.print();
+        });
+    }
+
+    /**
+     * open in iframe
+     */
+    function ReportCurrentTab(url) {
+        let iframe = document.getElementById("PrintFrame");
+        iframe.src = url;
+        if (iframe.onload == null) {
+            iframe.onload = () => {
+                iframe.contentWindow.print();
+            };
+        }
+    }
+
+
+    function OpenReport(url) {
+        const openLocation = GetOpenLocation();
+        if (openLocation == "NewTab") {
+            ReportNewTab(url);
+        } else {
+            ReportCurrentTab(url);
+        }
+    }
+
+    function GroupBtn_Click(){
+        OpenReport("/api/Report/Group");
+    }
+
+    function LabelBtn_Click(){
+        OpenReport("/api/Report/Label");
+    }
+
+    function HierarchyBtn_Click(){
+        OpenReport("/api/Report/Hierarchy");
+    }
+</script>
