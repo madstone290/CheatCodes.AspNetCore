@@ -2,6 +2,8 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    string ThankYouKorean = "감사합니다";
+    string ThankYouJapanese = "ありがとうございました";
 }
 
 @* 서버의 Resource파일을 자바스크립트 객체로 변환하여 클라이언트에서 객체를 사용한다. *@
@@ -17,7 +19,37 @@
 <div>Orders</div>
 <div id="orders"></div>
 
+
+<div style="height:50px; background-color:antiquewhite;"></div>
+
+@* html에서 c# 변수로 설정 *@
+<div>@ThankYouKorean</div>
+<div>@ThankYouJapanese</div>
+
+@* js변수로 설정 *@
+<div id="thankyou-korean">
+</div>
+<div id="thankyou-japanese">
+</div>
+<div id="thankyou-japanese2">
+</div>
+
+
 <script>
+    // c#변수를 js변수로 설정할 경우 원본값이 아닌 html인코딩이 적용된 값이 들어간다.
+    const thankYouKorean = "@ThankYouKorean";
+    const thankYouJapanese = "@ThankYouJapanese";
+    // html인코딩이 적용되지 않은 원본값이 들어간다.
+    const thankYouJapanese2 = "@Html.Raw(ThankYouJapanese)";
+
+    // html인코딩이 적용되어서 정상적으로 출력
+    document.getElementById("thankyou-korean").innerHTML = thankYouKorean;
+    // 문자열 자체를 출력하므로 비정상 출력
+    document.getElementById("thankyou-japanese").innerText = thankYouJapanese;
+    // html인코딩이 적용되지 않은 문자열이므로 정상적으로 출력된다.
+    document.getElementById("thankyou-japanese2").innerText = thankYouJapanese2;
+    
+
     const korean = "ko-KR";
     const english = "en-US";
     
