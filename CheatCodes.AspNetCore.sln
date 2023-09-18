@@ -7,12 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheatCodes.AspNetCore.Confi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheatCodes.AspNetCore.ClientResources", "CheatCodes.AspNetCore.ClientResources\CheatCodes.AspNetCore.ClientResources.csproj", "{3A15848A-501D-4EFC-BDB2-983D538D5154}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheatCodes.AspNetCore.DevReport", "CheatCodes.AspNetCore.DevReport\CheatCodes.AspNetCore.DevReport.csproj", "{3A6E58D0-5A9C-4E12-9C72-58C67B00909D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheatCodes.AspNetCore.DevReport", "CheatCodes.AspNetCore.DevReport\CheatCodes.AspNetCore.DevReport.csproj", "{3A6E58D0-5A9C-4E12-9C72-58C67B00909D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExtreme NuGet.config", "DevExtreme NuGet.config", "{8DD66A13-40B9-4512-A945-2A758ACCB0E7}"
 	ProjectSection(SolutionItems) = preProject
 		NuGet.config = NuGet.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketChat", "WebSocketChat\WebSocketChat.csproj", "{6D46E03A-9001-4406-9A11-4B59970D55E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{3A6E58D0-5A9C-4E12-9C72-58C67B00909D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A6E58D0-5A9C-4E12-9C72-58C67B00909D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A6E58D0-5A9C-4E12-9C72-58C67B00909D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D46E03A-9001-4406-9A11-4B59970D55E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D46E03A-9001-4406-9A11-4B59970D55E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D46E03A-9001-4406-9A11-4B59970D55E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D46E03A-9001-4406-9A11-4B59970D55E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

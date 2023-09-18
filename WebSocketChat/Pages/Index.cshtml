@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Websocket chat";
+}
+
+
+
+<h1>Chat App</h1>
+<p id="stateLabel">Ready to connect...</p>
+
+<div>
+    <label for="server">Server:</label>
+    <input id="server" style="width: 100%;" />
+</div>
+<div>
+    <label for="userName">Username:</label>
+    <input id="userName" />
+    <button id="connectButton" type="submit">Connect</button>
+</div>
+<div>
+    <label for="sendMessage">Message to send:</label>
+    <input id="sendMessage" disabled />
+    <button id="sendButton" type="submit" disabled>Send</button>
+    <button id="closeButton" disabled>Disconnect</button>
+</div>
+
+<h2>Chat log</h2>
+<div id="chatLog"></div>
+
+<script src="~/ts/Index.js"></script>

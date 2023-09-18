@@ -1,0 +1,15 @@
+﻿{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "target": "ES2017",
+        "outDir": "wwwroot/ts",
+        "baseUrl": "."
+    },
+    "include": [
+        "Pages/"
+    ]
+}
