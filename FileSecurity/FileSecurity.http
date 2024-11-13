@@ -1,0 +1,6 @@
+@FileSecurity_HostAddress = http://localhost:5296
+
+GET {{FileSecurity_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
