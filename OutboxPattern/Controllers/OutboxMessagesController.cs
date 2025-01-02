@@ -44,7 +44,8 @@ namespace OutboxPattern.Controllers
                     Message = "Order Created",
                     Recipient = order.CustomerName,
                     RetryCount = 3,
-                    Limit = DateTime.UtcNow.AddMinutes(-5),
+                    Limit = DateTime.UtcNow,
+                    IsError = Random.Shared.Next(1, 100) % 5 != 0
                 };
                 _outboxService.PublishMessage(nameof(NotificationPayload), payload);
             }
@@ -63,12 +64,34 @@ namespace OutboxPattern.Controllers
         }
 
 
-        [HttpGet("Unprocessed")]
-        public async Task<ActionResult> GetUnprocessedOutboxMessages()
+        [HttpGet("Uncompleted")]
+        public async Task<ActionResult> GetUncompletedMessages()
         {
-            var messages = await _dbContext.OutboxMessages.Where(x=> !x.IsProcessed).ToListAsync();
+            var messages = await _dbContext.OutboxMessages.Where(x=> !x.IsCompleted).ToListAsync();
             return Ok(messages);
         }
 
+
+        [HttpGet("Completed")]
+        public async Task<ActionResult> GetCompletedMessages()
+        {
+            var messages = await _dbContext.OutboxMessages.Where(x => x.IsCompleted).ToListAsync();
+            return Ok(messages);
+        }
+
+        [HttpGet("Failed")]
+        public async Task<ActionResult> GetFailedMessages()
+        {
+            var messages = await _dbContext.OutboxMessages.Where(x => !x.IsSuccessful).ToListAsync();
+            return Ok(messages);
+        }
+
+
+        [HttpGet("Succeeded")]
+        public async Task<ActionResult> GetSucceededMessages()
+        {
+            var messages = await _dbContext.OutboxMessages.Where(x => x.IsSuccessful).ToListAsync();
+            return Ok(messages);
+        }
     }
 }

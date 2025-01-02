@@ -15,9 +15,9 @@ namespace OutboxPattern.Core.Infrastructure.OutboxMessageHandlers
         {
             var payload = JsonSerializer.Deserialize<NotificationPayload>(message.Payload);
 
-            if(payload.Limit < DateTime.UtcNow)
+            if(payload.IsError)
             {
-                throw new Exception($"Notification limit exceeded for {payload.Recipient}");
+                throw new Exception($"Error sending notification to {payload.Recipient}");
             }
 
             var notificationInfo = $"{payload.Recipient} - {payload.Message} - {payload.RetryCount} - {payload.Limit}";

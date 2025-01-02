@@ -5,10 +5,11 @@
         public const int MaxRetryCount = 5;
 
         public int Id { get; private set; }
+        public Guid Guid { get; private set; } = Guid.NewGuid();
         public string PayloadType { get; private set; }
         public string Payload { get; private set; }
         public DateTime OccurredDateTime { get; private set; }
-        public bool IsProcessed { get; private set; }
+        public bool IsCompleted { get; private set; }
         public bool IsSuccessful { get; private set; }
         public int RetryCount { get; private set; }
         public DateTime? ProcessedDateTime { get; private set; }
@@ -25,21 +26,22 @@
             OccurredDateTime = DateTime.UtcNow;
         }
 
-        public void MarkAsProcessed()
+        public void MarkAsSuccess()
         {
             ProcessedDateTime = DateTime.UtcNow;
-            IsProcessed = true;
+            IsCompleted = true;
             IsSuccessful = true;
         }
 
-        public void MarkAsFailed(string remark)
+        public void MarkAsFailure(string remark)
         {
             ProcessedDateTime = DateTime.UtcNow;
             FailiureReasons.Add(remark);
             RetryCount++;
             if (RetryCount >= MaxRetryCount)
             {
-                IsProcessed = true;
+                IsCompleted = true;
+                IsSuccessful = false;
             }
         }
     }

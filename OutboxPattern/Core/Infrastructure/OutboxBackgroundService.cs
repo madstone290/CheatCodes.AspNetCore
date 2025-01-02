@@ -3,7 +3,7 @@ namespace OutboxPattern.Core.Infrastructure
 {
     public class OutboxBackgroundService : BackgroundService
     {
-        private const int Period = 1000 * 10;
+        private const int Period = 1000 * 5;
 
         private readonly IServiceProvider _serviceProvider;
 
@@ -17,11 +17,15 @@ namespace OutboxPattern.Core.Infrastructure
             var scope = _serviceProvider.CreateScope();
             var outboxMessageProcessor = scope.ServiceProvider.GetRequiredService<OutboxMessageProcessor>();
 
+            // 최초 실행시 처리되지 않은 메시지를 처리한다.
+            await outboxMessageProcessor.ProcessUncompletedMessage();
+
             while (!stoppingToken.IsCancellationRequested)
             {
-                await outboxMessageProcessor.ProcessMessages();
+                await outboxMessageProcessor.ProcessMessagesInBus();
 
                 await Task.Delay(Period, stoppingToken);
+                Console.WriteLine("OutboxBackgroundService is running...");
             }
         }
     }

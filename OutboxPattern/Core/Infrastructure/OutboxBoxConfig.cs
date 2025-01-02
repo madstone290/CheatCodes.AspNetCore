@@ -15,7 +15,7 @@ namespace OutboxPattern.Core.Infrastructure
             builder.Property(x => x.PayloadType);
             builder.Property(x => x.Payload);
             builder.Property(x => x.OccurredDateTime);
-            builder.Property(x => x.IsProcessed);
+            builder.Property(x => x.IsCompleted);
             builder.Property(x => x.IsSuccessful);
             builder.Property(x => x.RetryCount);
             builder.Property(x => x.ProcessedDateTime);

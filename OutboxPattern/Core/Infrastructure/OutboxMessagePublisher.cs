@@ -16,7 +16,14 @@ namespace OutboxPattern.Core.Infrastructure
             where TPayload : IPayload
         {
             var message = new OutboxMessage(type, JsonSerializer.Serialize(payload));
+
+            // 메시지를 저장
             _dbContext.OutboxMessages.Add(message);
+
+            // 즉시 처리할 수 있도록 메시지를 인메모리 버스에 추가
+            OutboxBus.Add(message.Guid);
+
+            
         }
 
     }
